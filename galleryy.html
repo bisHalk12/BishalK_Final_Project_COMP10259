@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clownfish Media Gallery</title>
+<style>
+  /* Styles for slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  /* Styles for images inside the slideshow */
+  .mySlides {
+    display: none;
+    width: 100%;
+  }
+
+  /* Styles for previous and next buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* Position of previous button */
+  .prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* Position of next button */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* Styles for dots that indicate slide number */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  /* Styles for active dot */
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+  /* Styles for caption text */
+  .desc {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+  }
+
+  header {
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+  }
+
+  /* Styles for lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .lightbox-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .lightbox-content img,
+  .lightbox-content video {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  /* Additional styling */
+  img, video {
+    border: 1px solid black;
+    margin: 20px;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body style="background-color:rgb(207, 217, 232)">
+<header>
+  <h1>Media Gallery of Clownfishes</h1>
+</header>
+<br><br>
+<div class="desc">Pictures of different Clownfishes</div> 
+<div class="slideshow-container">
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <img src="click.jpeg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="cf1.jpg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="cf2.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="cf3.jpg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="cf4.jpg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="cf5.jpg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="cf6.jpg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="i.jpeg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="image.jpeg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="m.jpeg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="n.jpeg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="o.jpeg" style="width:100%">
+  </div>
+  <br>       
+  <hr/>  <br><p style="text-align: center;">To stop the slideshow please press here or click on the top right cross icon given</p>
+  <div class="desc">Videos related to Clownfishes</div> 
+
+  <div class="video"> 
+      <video  class = "mySlides fade" width="1000" height="500" controls autoplay loop muted> 
+          <source src="video1.mp4" type="video/mp4"> 
+          <div class="desc"></div> 
+      </video> 
+      <video class = "mySlides fade" width="1000" height="500" controls autoplay loop muted> 
+          <source src="video2.mp4" type="video/mp4"> 
+      </video> 
+      <video class = "mySlides fade" width="1000" height="500" controls autoplay loop muted> 
+          <source src="video3.mp4" type="video/mp4"> 
+      </video> 
+  </div> 
+  <video class = "mySlides fade" width="1000" height="500" controls autoplay loop muted> 
+    <source src="video4.mp4" type="video/mp4"> 
+</video> 
+
+</div> 
+
+
+<!-- Lightbox -->
+<div class="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-content">
+    <span class="close" style="position: fixed; top: 20px; right: 20px; cursor: pointer; font-size: 24px;">&times;</span>
+    <div id="lightbox-item"></div>
+  </div>
+</div>
+
+<!-- Dots/bullets that indicate slide number -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <!-- Add more dots here -->
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) { slideIndex = 1; }
+  if (n < 1) { slideIndex = slides.length; }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
+
+// Open lightbox
+function openLightbox(item) {
+  var lightbox = document.querySelector('.lightbox');
+  var lightboxItem = document.getElementById('lightbox-item');
+  lightboxItem.innerHTML = item.innerHTML;
+  lightbox.style.display = 'flex';
+}
+
+// Close lightbox
+function closeLightbox() {
+  var lightbox = document.querySelector('.lightbox');
+  lightbox.style.display = 'none';
+}
+
+// Automatic slideshow cycling
+var slideInterval = setInterval(function() {
+  plusSlides(1);
+}, 2000); // Change slide every seconds
+
+// Pause slideshow on hover
+var slideshowContainer = document.getElementsByClassName('slideshow-container')[0];
+slideshowContainer.addEventListener('mouseenter', function() {
+  clearInterval(slideInterval);
+});
+
+// Resume slideshow on mouse leave
+slideshowContainer.addEventListener('mouseleave', function() {
+  slideInterval = setInterval(function() {
+    plusSlides(1);
+  }, 1000); // Change slide every 5 seconds
+});
+
+// Close lightbox when clicking outside the content
+var lightbox = document.querySelector('.lightbox');
+lightbox.addEventListener('click', function(event) {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape' && lightbox.style.display === 'flex') {
+    closeLightbox();
+  }
+});
+
+// Adding lightbox functionality to images
+var images = document.querySelectorAll('.mySlides img');
+images.forEach(function(image) {
+  image.addEventListener('click', function() {
+    openLightbox(this);
+  });
+});
+
+// Adding lightbox functionality to videos
+var videos = document.querySelectorAll('.mySlides video');
+videos.forEach(function(video) {
+  video.addEventListener('click', function() {
+    openLightbox(this);
+  });
+});
+</script>
+</body>
+</html>

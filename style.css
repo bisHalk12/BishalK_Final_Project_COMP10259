@@ -1,0 +1,172 @@
+.nav li a {
+  display: block;
+  padding: 10px;
+  margin: 2px;
+  width: 100%;
+  text-decoration: none;
+  color: yellow; /* Changed text color from white to yellow */
+}
+
+.nav a:hover {
+  color: white; /* Changed hover text from yellow to white */
+}
+
+.nav li:hover {
+  background-color: blue;
+  font-size: larger;
+}
+
+body {
+  border: 3px solid black;
+  padding: 20px;
+}
+
+header {
+  height: 470px;
+  text-align: right;
+  padding-right: 30px;
+  padding-top: 200px;
+  background-image: url(bye.jpeg);
+}
+
+#mainhead {
+  font-size: 50px;
+  color: white;
+  font-family: fantasy;
+  text-align: center;
+  text-align: center;
+  text-shadow: 2px 6px black;
+}
+
+#quote {
+  font-size: 15px;
+  font-family: monospace;
+  padding-right: 50px;
+  color: rgb(204, 223, 158);
+  text-shadow: 5px 2px black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#subhead {
+  color: black;
+  font-size: 25px;
+  padding-top: 30px;
+  padding-left: 15px;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(231, 204, 219);
+}
+
+.nav li {
+  float: left;
+  padding: 1px;
+  margin: 2px;
+}
+
+img {
+  width: 30%;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.text {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.main img {
+  width: 32rem;
+  height: 16rem;
+  margin-right: 3rem;
+  margin-top: 4rem;
+}
+
+#habitat img {
+  display: block;
+  margin: 0 auto;
+  height: 35rem;
+  width: 65rem;
+}
+
+footer {
+  background-color: #d3bfbf;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+#facts {
+  font-size: xx-large;
+  color: rgb(142, 206, 206);
+  text-align: left;
+}
+
+#cycle {
+  font-size: xx-large;
+  color: rgb(142, 206, 206);
+}
+
+#home {
+  font-size: xx-large;
+  color: rgb(142, 206, 206);
+}
+
+#predators {
+  font-size: xx-large;
+  color: rgb(142, 206, 206);
+}
+
+#count {
+  font-size: xx-large;
+  color: rgb(142, 206, 206);
+}
+
+#reference {
+  font-size: xx-large;
+  color: rgb(142, 206, 206);
+}/*# sourceMappingURL=style.css.map */
+.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}

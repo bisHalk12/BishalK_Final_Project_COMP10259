@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css"> 
+    <script src="https://kit.fontawesome.com/46934192a7.js" crossorigin="anonymous"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+<body class="body">
+    <div class="hero">
+        <form onsubmit=" event.preventDefault();validateForm();sendEmail();return false;" action="https://formspree.io/f/xbjvnkkv"
+        method="POST">
+            <div class="row">
+                <div class="input-group">
+                    <input type="text" name="firstName" id="firstName" required>
+                    <label for="firstName"><i class="fa-solid fa-user"></i> First Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="lastName"id="lastName" required>
+                    <label for="lastName"><i class="fa-solid fa-user"></i> Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <input type="email" name="email"id="email" required>
+                    <label for="email"><i class="fa-solid fa-envelope"></i> Email Id</label>
+                </div>
+                <div class="input-group">
+                    <input type="tel"name="phone" id="phone" required>
+                    <label for="phone"><i class="fa-solid fa-phone"></i> Phone Number</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="text" name="date"id="date" required>
+                <label for="date"><i class="fa-solid fa-calendar"></i> Date</label>
+            </div>
+            <div class="input-group">
+                <textarea id="message" name="message" rows="8" required></textarea>
+                <label for="message"><i class="fa-solid fa-message"></i> Message</label>
+            </div>
+            <br>
+            <button type="submit" name="submit" value="Send"></button><br><br><br>
+        </form>
+    </div>
+
+    <section class="contact-info">
+        <h3>For more Information please visit</h3>
+        <address>
+            gweinchy company<br>
+            123 Main Street<br>
+            City, State Zip Code<br>
+            Phone: <a href="tel:1234567890">123-456-7890</a><br>
+            Email: <a href="mailto:info@example.com">info@example.com</a>
+
+        </address>
+    </section>
+
+    <script>
+        function validateForm() {
+            let firstName = document.getElementById('firstName').value;
+            let lastName = document.getElementById('lastName').value;
+            let email = document.getElementById('email').value;
+            let date = document.getElementById('date').value;
+            let phone = document.getElementById('phone').value;
+            let message = document.getElementById('message').value;
+
+            if (firstName.length < 5) {
+                alert('First name should be at least 5 characters.');
+                return false;
+            }
+            if (lastName.length < 5) {
+                alert('Last name should be at least 5 characters.');
+                return false;
+            }
+            if (!isValidEmail(email)) {
+                alert('Invalid email format.');
+                return false;
+            }
+            if (!isValidDate(date)) {
+                alert('Invalid date format. Please use dd/mm/yy format.');
+                return false;
+            }
+            if (!isValidPhone(phone)) {
+                alert('Phone number must contain 10 digits.');
+                return false;
+            }
+            if (message.length < 50) {
+                alert('Message must be at least 50 characters long.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function isValidEmail(email) {
+            var emailRegex = /\S+@\S+\.\S+/;
+            return emailRegex.test(email);
+        }
+
+        function isValidDate(date) {
+            var dateRegex = /^\d{2}\/\d{2}\/\d{2}$/;
+            return dateRegex.test(date);
+        }
+
+        function isValidPhone(phone) {
+            var phoneRegex = /^\d{10}$/;
+            return phoneRegex.test(phone);
+        }
+    
+        function sendEmail(){
+                Email.send({
+                   Host : "smtp.elasticemail.com",
+                   Username : "hyperexecute@gmail.com",
+                   Password : "93DA6D560B2B0BF579EB5A9F613232436912",
+                   To : 'bishalchhetri347@gmail.com',
+                   From : document.getElementById("email").value,
+                   Subject : "New Contact Form Enquiry",
+                   Body : "Name: "+document.getElementById("firstName").value +document.getElementById("lastName").value
+                           +"<br> Email: "+document.getElementById("email").value
+                           +"<br> Date: "+document.getElementById("date").value
+                           +"<br> Contact No: "+document.getElementById("phone").value
+                           +"<br> Message: "+document.getElementById("message").value
+
+                })
+                .then(
+                message => alert("Message sent Successfully")
+                );
+            }
+    </script>
+</body>
+</html>
